@@ -104,7 +104,10 @@
 %token <string * Tok.t> StringLiteral
 (* like for JS/PHP/Python *)
 %token <string * Tok.t> T_INTERPOLATED_START
+%token <string * Tok.t> T_INTERPOLATED_STRING
 %token <Tok.t> T_INTERPOLATED_END
+
+%token <Tok.t> T_DOLLAR_LBRACE "${"
 
 (* keywords tokens *)
 %token <Tok.t> Kabstract "abstract"
@@ -155,6 +158,7 @@
 %token <Tok.t> DOT "."
 %token <Tok.t> COLON ":"
 %token <Tok.t> EQUALS "="
+%token <Tok.t> QUOTE "'"
 
 (* operators *)
 %token <Tok.t> PLUS "+"
@@ -180,6 +184,8 @@
 (* semgrep-ext: *)
 %token <Tok.t> Ellipsis "..."
 %token <Tok.t> LDots "<..." RDots "...>"
+
+%token <int * int> DEDENT
 
 (*************************************************************************)
 (* Priorities *)

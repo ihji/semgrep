@@ -562,7 +562,7 @@ and call_expression = [
     )
 ]
 
-and call_signature = (
+and call_signature_ = (
     type_parameters option
   * formal_parameters
   * [
@@ -573,7 +573,14 @@ and call_signature = (
       option
 )
 
+(*
+TODO OCaml5 produces
+```
+Error: This kind of expression is not allowed as right-hand side of `let rec'
+```
+
 and call_signature_ = call_signature
+*)
 
 and catch_clause = (
     Token.t (* "catch" *)
@@ -1586,6 +1593,8 @@ and variable_declarator = [
     )
 ]
 [@@deriving sexp_of]
+
+type call_signature = call_signature_
 
 type program = [
     `Opt_hash_bang_line_rep_choice_export_stmt of (
